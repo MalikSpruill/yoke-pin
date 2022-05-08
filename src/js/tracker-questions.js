@@ -1,4 +1,4 @@
-let inquirer = require("inquirer");
+let {prompt} = require("inquirer");
 
 
 let trackerQuestions = (param1, param2) => {
@@ -71,6 +71,6 @@ let trackerQuestions = (param1, param2) => {
 }
 
 
-//inquirer.prompt(trackerQuestions(1, 2)); //test
+//prompt(trackerQuestions(1, 2)); //test
 
 module.exports = trackerQuestions;

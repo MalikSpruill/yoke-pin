@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "inqTest": "node ./src/js/tracker-questions.js"
+    "inq": "node ./src/js/tracker-questions.js",
+    "inq2": "node ./src/js/tracker-answers.js"
   },
   "repository": {
     "type": "git",

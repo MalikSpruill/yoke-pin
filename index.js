@@ -1,7 +1,7 @@
 const db = require("./db/connection");
 let inquirer = require("inquirer");
 require("console.table");
-const {viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment} = require("./src/js/tracker-answers");
+const {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole} = require("./src/js/tracker-answers");
 
 const thisFunc = async () => {
     let params = ["Steve", "Myers", 2, 1]
