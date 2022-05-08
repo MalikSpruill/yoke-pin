@@ -101,12 +101,29 @@ const updatesEmployeeRole = async () => {
             choices: [...employees]
         }
     ])
-    let employee = await data.filter(person => person.id === Number(chosenEmployee.split(" ")[0]));
+    let employee = await data.filter(person => person.id === Number(chosenEmployee.split(" ")[0])); 
     console.log(employee);
+
+    let roleData = await db.query("SELECT id, title from role");
+    roleData = roleData[0]
+    let roles = await roleData.map(role => {
+        return `${role.id} _role  ${role.title} _title`;
+    })
+    let {chosenRole} = await prompt([
+        {
+            type: "list",
+            name: "chosenRole",
+            message: "Which role would you like to choose for the employee?",
+            choices: [...roles]
+        }
+    ])
+    let newRole = await roleData.filter(role => role.id === Number(chosenRole.split(" ")[0])); 
+    console.log(newRole);
+    
     process.exit();
 }
 
 updatesEmployeeRole();
 
 
-//module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole};
+//module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole, updatesEmployeeRole};
