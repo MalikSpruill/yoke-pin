@@ -1,0 +1,24 @@
+{
+  "name": "yoke-pin",
+  "version": "1.0.0",
+  "description": "An employee-tracker app that allows companies to host information about employees while performing CRUD operations on employee data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MalikSpruill/yoke-pin.git"
+  },
+  "author": "Malik Spruill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MalikSpruill/yoke-pin/issues"
+  },
+  "homepage": "https://github.com/MalikSpruill/yoke-pin#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^2.3.3"
+  }
+}
