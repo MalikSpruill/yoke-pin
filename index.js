@@ -1,6 +1,7 @@
 const db = require("./db/connection");
 let inquirer = require("inquirer");
 require("console.table");
+const {viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment} = require("./src/js/tracker-answers");
 
 const thisFunc = async () => {
     let params = ["Steve", "Myers", 2, 1]
@@ -11,8 +12,8 @@ const thisFunc = async () => {
     console.table(test2);
 }
 
-thisFunc();
-
+//thisFunc();
+viewAllEmployees();
 
 //db.connect(err => err ? console.log(err) : console.log("Database connected!"));
 
