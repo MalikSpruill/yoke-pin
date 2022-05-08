@@ -11,7 +11,6 @@ const viewAllRoles = async () => {
     let data = await db.query("SELECT title, salary, department.name FROM role LEFT JOIN department ON role.department_id = department.id")
     let roles = data[0];
     console.table(roles);
-    process.exit(); //DELETE THIS ----------------------------------------------------------
 }
 
 const viewAllEmployees = async () => {
@@ -88,7 +87,26 @@ const addsEmployee = async () => {
     throw new Error("Something went wrong in the addsEmployee function!");
 }
 
-//addsRole();
+const updatesEmployeeRole = async () => {
+    let data = await db.query("SELECT * from employee");
+    data = data[0];
+    let employees = await data.map(employee => {
+        return`${employee.id} Name: ${employee.first_name} ${employee.last_name} Role: ${employee.role_id} Manager: ${employee.manager_id}`;
+    })
+    let {chosenEmployee} = await prompt([
+        {
+            type: "list",
+            name: "chosenEmployee",
+            message: "Which employee would you like to update to change their role?",
+            choices: [...employees]
+        }
+    ])
+    let employee = await data.filter(person => person.id === Number(chosenEmployee.split(" ")[0]));
+    console.log(employee);
+    process.exit();
+}
+
+updatesEmployeeRole();
 
 
 //module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole};
