@@ -1,5 +1,6 @@
 let {prompt} = require("inquirer");
 const db = require("../../db/connection");
+require("console.table");
 
 const viewAllDepartments = async () => {
     let data = await db.query("SELECT * FROM department")
@@ -102,7 +103,6 @@ const updatesEmployeeRole = async () => {
         }
     ])
     let employee = await data.filter(person => person.id === Number(chosenEmployee.split(" ")[0])); 
-    console.log(employee);
 
     let roleData = await db.query("SELECT id, title from role");
     roleData = roleData[0]
@@ -118,12 +118,19 @@ const updatesEmployeeRole = async () => {
         }
     ])
     let newRole = await roleData.filter(role => role.id === Number(chosenRole.split(" ")[0])); 
-    console.log(newRole);
+    let sql = `UPDATE employee SET role_id = ? WHERE id = ? `
+    let roleChanged = await db.query(sql, [newRole[0].id, employee[0].id])
+    if (roleChanged) {
+        console.log("The employee's role has been changed!")
+        process.exit();
+    }
+    throw new Error("Something went wrong in the roles block of the updateEmployeeRole function")
     
-    process.exit();
+   
 }
 
-updatesEmployeeRole();
+const exit = () => {
 
+}
 
-//module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole, updatesEmployeeRole};
+module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole, updatesEmployeeRole, exit};
