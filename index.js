@@ -1,19 +1,38 @@
-const db = require("./db/connection");
 let initialPrompt = require("./src/js/tracker-questions");
 let {prompt} = require("inquirer");
-const {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole, updatesEmployeeRole, exit} = require("./src/js/tracker-answers");
+const {viewAllDepartments, viewAllRoles, viewAllEmployees, addsDepartment, addsRole, addsEmployee, updatesEmployeeRole, exit} = require("./src/js/tracker-answers");
+
 
 const init = async () => {
-    let answerChoice = prompt(initialPrompt);
-    switch (answerChoice) {
-        case "View all departments": return viewAllDepartments();
-        case "View all roles" : return viewAllRoles();
-        case "View all employees" : return viewAllEmployees();
-        case "Add a department" : return addsDepartment();
-        case "Add a role" : return addsRole();
-        case "Update an employee role" : updatesEmployeeRole();
-        default: exit()
-    }
-};
+    while (true) {
+        let {trackerOptions} = await prompt(initialPrompt);
 
+        if (trackerOptions === "View all departments") {
+            await viewAllDepartments();
+        }
+        else if (trackerOptions === "View all roles") {
+            await viewAllRoles();
+        }
+        else if (trackerOptions === "View all employees") {
+            await viewAllEmployees();
+        }
+        else if (trackerOptions === "Add a department") {
+            await addsDepartment();
+        }
+        else if (trackerOptions === "Add a role") {
+            await addsRole();
+        }
+        else if (trackerOptions === "Add an employee") {
+            await addsEmployee();
+        }
+        else if (trackerOptions === "Update an employee role") {
+            await updatesEmployeeRole();
+        }
+        else {
+            let decision = await exit();
+            if (decision) process.exit();
+            init();
+        }
+    }
+} 
 init();
