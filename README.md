@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/83142065/167489137-26900725-ba3b-4b66-
   
   ## Usage 
   Follow these instructions to use the application properly:
-  Open an IDE an access the terminal.  NPM install the required dependencies.  Delete and place in your own password from your mysql account. Type in `node index` from the command line to access prompts. 
+  Open an IDE and access the terminal.  NPM install the required dependencies.  Delete and place in your own password from your mysql account. Type in `node index` from the command line to access prompts. 
   
   
   ## License 
