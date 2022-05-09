@@ -5,6 +5,7 @@
   ## Description
   An employee-tracker app that allows companies to host information about employees while being able to perform CRUD operations on employee data.
 
+https://user-images.githubusercontent.com/83142065/167489137-26900725-ba3b-4b66-aeae-dd53450ee946.mp4
   
   ## Table of Contents
   * [Installation](#installation)
